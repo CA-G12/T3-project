@@ -1,15 +1,16 @@
 import React from "react";
 import Highlight from "./Highlight";
-
 class Match extends React.Component {
   state = {
     videoLink: null,
   };
 
   componentDidUpdate(prevProps, prevState) {
+
     if (prevState.videoLink !== this.state.videoLink) {
       this.setState({ videoLink: this.state.videoLink });
     }
+
   }
   render() {
     const { matchData } = this.props;

@@ -12,6 +12,7 @@ class Container extends React.Component {
       .then(({data}) => {
         this.setState({ dataList: data });
       })
+
       .catch((err) => this.setState({ err: true }));
   }
 
@@ -19,6 +20,7 @@ class Container extends React.Component {
     if (this.state.err) {
       return <h1>Server Error 500</h1>;
     }
+
     if (!this.state.dataList) return <div>Loading...</div>;
     return (
       <div className="container">

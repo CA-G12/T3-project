@@ -2,7 +2,7 @@ import React from "react";
 import Parser from "html-react-parser";
 class Highlight extends React.Component {
   render() {
-    const { fun, videoLink } = this.props;
+    const { videoLink, fun } = this.props;
     if (!videoLink) return <div>Loading...</div>;
     return (
       <div className="popup">

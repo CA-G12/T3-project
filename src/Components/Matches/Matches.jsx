@@ -2,7 +2,8 @@ import React from "react";
 import Match from "./Match";
 
 class Matches extends React.Component {
-  render() {
+
+ render() {
     const { data } = this.props;
     if (!data) return <div>Loading...</div>;
     return (
