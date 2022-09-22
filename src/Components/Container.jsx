@@ -4,17 +4,18 @@ import Matches from "./Matches/Matches";
 class Container extends React.Component {
   state = {
     dataList: [],
+    err:false,
   };
   componentDidMount() {
     getData()
       .then((data) => {
         this.setState({ dataList: data });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.setState({err:true}));
   }
-  componentDidUpdate(prevProps, prevState) {}
 
   render() {
+    if(this.state.err) return <h1>Server error 500</h1>
     if (!this.state.dataList) return <div>Loading...</div>;
     return <Matches data={this.state.dataList}></Matches>;
   }
