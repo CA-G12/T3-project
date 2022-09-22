@@ -6,18 +6,23 @@ class Match extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-
     if (prevState.videoLink !== this.state.videoLink) {
       this.setState({ videoLink: this.state.videoLink });
     }
-
   }
   render() {
     const { matchData } = this.props;
     return (
       <>
         <div className="single-match">
-          <img src={matchData.thumbnail} />
+          <img
+            src={matchData.thumbnail}
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src =
+                "https://image.freepik.com/free-vector/highlight-text-logo-banner-3d_141313-118.jpg";
+            }}
+          />
           <div className="hover">
             <p>{matchData.competition.name}</p>
             <p>{new Date(matchData.date).toLocaleDateString()}</p>
