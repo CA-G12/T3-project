@@ -6,19 +6,28 @@ class Match extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.videoLink !== this.state.videoLink)
+
+    if (prevState.videoLink !== this.state.videoLink) {
       this.setState({ videoLink: this.state.videoLink });
-    
+    }
+
   }
   render() {
     const { matchData } = this.props;
     return (
       <>
-        <div
-          style={{ width: "200px" }}
-          onClick={() => this.setState({ videoLink: matchData.embed })}
-        >
-          <img style={{ maxWidth: "100%" }} src={matchData.thumbnail} />
+        <div className="single-match">
+          <img src={matchData.thumbnail} />
+          <div className="hover">
+            <p>{matchData.competition.name}</p>
+            <p>{new Date(matchData.date).toLocaleDateString()}</p>
+            <p>{matchData.title}</p>
+            <button
+              onClick={() => this.setState({ videoLink: matchData.embed })}
+            >
+              Watch Highlight
+            </button>
+          </div>
         </div>
         {this.state.videoLink && (
           <Highlight

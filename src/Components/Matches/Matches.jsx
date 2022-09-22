@@ -2,25 +2,13 @@ import React from "react";
 import Match from "./Match";
 
 class Matches extends React.Component {
-  state = {
-    matchesList: null,
-  };
-  componentDidMount() {
+
+ render() {
     const { data } = this.props;
-    this.setState({ matchesList: data.data });
-  }
-  componentDidUpdate(prevProps) {
-    const { data } = this.props;
-    if (prevProps.data !== data) {
-      this.setState({ matchesList: data.data });
-    }
-  }
-  render() {
-    if (!this.state.matchesList) return <div>Loading...</div>;
+    if (!data) return <div>Loading...</div>;
     return (
-      <div>
-        <h1>Top Matches Highlights</h1>
-        {this.state.matchesList.map((m) => (
+      <div className="matches">
+        {data.map((m) => (
           <div key={m.title}>
             <Match matchData={m} />
           </div>
