@@ -1,15 +1,8 @@
 import React from "react";
-import Rodal from "rodal";
-import "rodal/lib/rodal.css";
 import Parser from "html-react-parser";
 class Highlight extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    const { videoLink } = this.props;
-    const { fun } = this.props;
-    console.log(fun);
+    const { videoLink, fun } = this.props;
     if (!videoLink) return <div>Loading...</div>;
     return (
       <div
